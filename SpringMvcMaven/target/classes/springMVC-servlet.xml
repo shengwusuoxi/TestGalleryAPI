@@ -15,25 +15,13 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven />
 	
-	<!-- Enables the Spring MVC @Controller programming model -->
-    <annotation-driven>
-        <message-converters>
-            <!--<beans:bean class="org.springframework.http.converter.StringHttpMessageConverter"/>-->
-            <!--<beans:bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>-->
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper">
-                    <bean class="com.knappsack.swagger4springweb.util.ScalaObjectMapper"/>
-                </property>
-            </bean>
-        </message-converters>
-    </annotation-driven>	
-
 	<!-- 扫描包 -->
-	<context:component-scan base-package="com.citic.risk" />
+	<context:component-scan base-package="com.spg.apidoc" />
 	
-	<resources mapping="/resources/**" location="/resources/" />
+	<bean class="com.spg.apidoc.common.configer.MySwaggerConfig"></bean>
+	
 
-	<!-- 用于页面跳转,根据请求的不同跳转到不同页面，如请求index.do则跳转到/WEB-INF/jsp/index.jsp -->
+	<!-- 用于页面跳转,根据请求的不同跳转到不同页面，如请求index.do则跳转到/WEB-INF/index.jsp -->
 	<bean id="findJsp"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 
@@ -50,16 +38,12 @@
 		<!-- 返回的视图模型数据需要经过jstl来处理 -->
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
 	<!-- 对静态资源文件的访问 不支持访问WEB-INF目录 -->
 	<mvc:default-servlet-handler />
-
-	<!-- 对静态资源文件的访问 支持访问WEB-INF目录 -->
-	<!-- <mvc:resources location="/uikit-2.3.1/" mapping="/uikit-2.3.1/**" /> -->
-
 
 	<bean id="stringConverter"
 		class="org.springframework.http.converter.StringHttpMessageConverter">
