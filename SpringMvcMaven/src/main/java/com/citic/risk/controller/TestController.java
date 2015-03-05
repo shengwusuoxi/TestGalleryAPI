@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.citic.risk.entity.Person;
+import com.citic.risk.models.Person;
 
 /**
  * 基于Restful风格架构测试
@@ -47,8 +47,8 @@ public class TestController {
 		logger.info("获取人员信息id=" + id);
 		Person person = new Person();
 		person.setName("张三");
-		person.setSex("男");
-		person.setAge(30);
+//		person.setSex("男");
+//		person.setAge(30);
 		person.setId(id);
 		return person;
 	}
@@ -89,22 +89,22 @@ public class TestController {
 
 		Person person = new Person();
 		person.setName("张三");
-		person.setSex("男");
-		person.setAge(25);
+//		person.setSex("男");
+//		person.setAge(25);
 		person.setId(101);
 		lstPersons.add(person);
 
 		Person person2 = new Person();
 		person2.setName("李四");
-		person2.setSex("女");
-		person2.setAge(23);
+//		person2.setSex("女");
+//		person2.setAge(23);
 		person2.setId(102);
 		lstPersons.add(person2);
 
 		Person person3 = new Person();
 		person3.setName("王五");
-		person3.setSex("男");
-		person3.setAge(27);
+//		person3.setSex("男");
+//		person3.setAge(27);
 		person3.setId(103);
 		lstPersons.add(person3);
 

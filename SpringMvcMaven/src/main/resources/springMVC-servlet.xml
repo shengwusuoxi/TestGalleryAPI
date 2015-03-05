@@ -14,9 +14,24 @@
 
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven />
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven>
+        <message-converters>
+            <!--<beans:bean class="org.springframework.http.converter.StringHttpMessageConverter"/>-->
+            <!--<beans:bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>-->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.knappsack.swagger4springweb.util.ScalaObjectMapper"/>
+                </property>
+            </bean>
+        </message-converters>
+    </annotation-driven>	
 
 	<!-- 扫描包 -->
 	<context:component-scan base-package="com.citic.risk" />
+	
+	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- 用于页面跳转,根据请求的不同跳转到不同页面，如请求index.do则跳转到/WEB-INF/jsp/index.jsp -->
 	<bean id="findJsp"
